@@ -1,33 +1,166 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState, useEffect, useRef } from 'react';
+import styles from "./app.module.css";
+import { FocusWrapper } from "./components";
+import { LuTimer, LuSkull, LuCaseSensitive, LuStar } from 'react-icons/lu';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mistakes, setMistakes] = useState<number>(0);
+  const [input, setInput] = useState<string>("");
+  const [capsLock, setCapsLock] = useState<boolean>(false);
+
+  const [currentText, setCurrentText] = useState<string>(texts[0]);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [endTime, setEndTime] = useState<number | null>(null);
+  const [timer, setTimer] = useState<number>(30);
+
+  useEffect(() => {
+    setCurrentText(texts[Math.floor(Math.random() * TextDecoderStream.length)]);
+
+    const focusInput = () => {
+      setIsFocused(true);
+      inputRef.current?.focus();
+    };
+
+    const handleClick = () => focusInput();
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.getModifierState("CapsLock")) {
+        setCapsLock(true);
+      }else {
+        setCapsLock(false);
+      }
+      focusInput();
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+    if (isFocused && !isCompleted && timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    } else if (timer <= 0) {
+      setIsCompleted(true)
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isFocused, isCompleted, timer]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!startTime) setStartTime(Date.now());
+    if (isCompleted || timer <= 0) return;
+
+    let newValue = event.target.value;
+    let currentMistakes = mistakes;
+
+    if (newValue.length >= currentText.length) {
+      const lastTypedChar = newValue[newValue.length - 1];
+      const correctChar = currentText[newValue.length - 1];
+      if (lastTypedChar !== correctChar) {
+        currentMistakes += 1;
+        setMistakes(currentMistakes);
+      }
+    }
+
+    setInput(newValue);
+  };
+
+  const calculateWPM () => {
+    if (!startTime || !endTime) return 0;
+    const timeTaken = (endTime - startTime) / 60000;
+    const wordCount = currentText.split(" ").length;
+    return (wordCount / timeTaken).toFixed(2);
+  };
+
+  const calculatePoints = (mistakes: number) => {
+    const textLength = currentText.replace(/\s/g, "").length;
+    let pointsEarned = 0;
+
+    if (mistakes < textLength) {
+      if (mistakes === 0) {
+        pointsEarned = 100;
+      } else if (mistakes <= 5) {
+        pointsEarned = 80;
+      } else if (mistakes <= 10) {
+        pointsEarned = 60;
+      } else if (mistakes <= 15) {
+        pointsEarned = 40;
+      } else {
+        pointsEarned = 20;
+      }
+    }
+
+    setEarnedPoints(pointsEarned)
+  };
+  const handleReplay = () => {
+    setInput("");
+    setMistakes(0);
+    setIsCompleted(false);
+    setEarnedPoints(0);
+    setPoints(points + earnedPoints);
+    inputRef.current?.focus();
+    setTimer(30);
+    setStartTime(null);
+    setEndTime(null);
+    setCurrentText(texts[Math.floor(Math.random() * TextDecoderStream.length)]);
+    setPoints(points - mistakes + earnedPoints);
+  };
+
+  const renderText = (): JSX.Element[] => {
+    const elements: JSX.Element[] = [];
+    let inputIndex = 0;
+
+    const textWords = currentText.split(/\s+/);
+    textWords.forEach((word, wordIndex) => {
+      for (let i =0; i < word.length; i++) {
+        const char = word[i];
+        const inputChar = input[inputIndex];
+        const className = 
+          inputIndex < input.length
+            ? inputChar === char
+              ? styles.correctChar
+              : styles.incorrectChar
+            : styles.untypedChar;
+
+        elements.push(
+          <span key={`${wordIndex}-${i}`} className={className}> 
+            {char}
+          </span>
+        );
+        inputIndex++;
+      }
+
+      if (wordIndex < textWords.length - 1) {
+        elements.push(
+          <span key={`space-${wordIndex}`} className={styles.spaceChar}>
+            {" "}
+          </span>
+        );
+        inputIndex++;
+      }
+    });
+
+    return elements;
+  };
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
