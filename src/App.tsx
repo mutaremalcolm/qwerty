@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from "./app.module.css";
+import { useTypeRushStore } from './util/store';
 import { FocusWrapper, GameSummary } from "./components";
 import { LuTimer, LuSkull, LuCaseSensitive, LuStar } from 'react-icons/lu';
-import './App.css'
+import { texts } from './util/texts';
 
 export default function App() {
+  const { points, earnedPoints, setPoints, setEarnedPoints} = 
+    useTypeRushStore();
   const [mistakes, setMistakes] = useState<number>(0);
   const [input, setInput] = useState<string>("");
   const [capsLock, setCapsLock] = useState<boolean>(false);
@@ -68,6 +71,13 @@ export default function App() {
     let currentMistakes = mistakes;
 
     if (newValue.length >= currentText.length) {
+      newValue = newValue.slice(0, currentText.length);
+      setIsCompleted(true);
+      setEndTime(Date.now());
+      calculatePoints(currentMistakes);
+    }
+
+      if (!isCompleted && newValue.length > input.length) {
       const lastTypedChar = newValue[newValue.length - 1];
       const correctChar = currentText[newValue.length - 1];
       if (lastTypedChar !== correctChar) {
@@ -79,7 +89,7 @@ export default function App() {
     setInput(newValue);
   };
 
-  const calculateWPM () => {
+  const calculateWPM = () => {
     if (!startTime || !endTime) return 0;
     const timeTaken = (endTime - startTime) / 60000;
     const wordCount = currentText.split(" ").length;
