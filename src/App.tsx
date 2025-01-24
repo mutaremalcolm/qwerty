@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from "./app.module.css";
-import { FocusWrapper } from "./components";
+import { FocusWrapper, GameSummary } from "./components";
 import { LuTimer, LuSkull, LuCaseSensitive, LuStar } from 'react-icons/lu';
 import './App.css'
 
-function App() {
+export default function App() {
   const [mistakes, setMistakes] = useState<number>(0);
   const [input, setInput] = useState<string>("");
   const [capsLock, setCapsLock] = useState<boolean>(false);
@@ -159,10 +159,47 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className={styles.wrapper}>
+        {!isFocused && <FocusWrapper />}
+        {isCompleted ? (
+          <GameSummary 
+            calculateWPM={calculateWPM}
+            points={points}
+            mistakes={mistakes}
+            earnedPoints={earnedPoints}
+            handleReplay={handleReplay}
+          />
+        ) : (
+          <div className={styles.gameContainer}>
+            <div className={styles.gameStatus}>
+              <div className={styles.timerDisplay}>
+                <LuTimer /> Timer <span>{timer}</span>
+              </div>
+              <div className={styles.mistakesCount}>
+                <LuSkull /> Mistakes <span>{mistakes}</span>
+              </div>
+              <div>
+                <LuStar /> Points <span>{points}</span>
+              </div>
+
+              <div>
+                <LuCaseSensitive /> Caps Lock{" "}
+                <span>{capsLock ? "On" : "Off"}</span>
+              </div>
+            </div>
+            <div className={styles.text}>{renderText()}</div>
+            <input 
+              type="text"
+              value={input}
+              ref={inputRef}
+              onChange={handleChange}
+              className='sr-only'
+              placeholder="Start typing..."
+              readOnly={isCompleted}
+            />
+          </div>
+        )}
       </div>
     </>
   )
 }
-
-export default App
