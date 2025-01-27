@@ -5,13 +5,13 @@
         built with <a href="https://nextjs.org">Vite</a> &
         hosted by <a href="https://vercel.com/">Vercel</a> 
     </h6>
-    <!-- <h3> ⚠ Currently a work in progress ⚠</h3>
+    <!-- <h3> ⚠ Currently a work in progress ⚠</h3> -->
     <h4>
       <a href='https://qwerty-xi-three.vercel.app/', target='_blank'>
         🔗 demo website
       </a>
     </h4>
-    <h4>
+    <!-- <h4>
       <a href='https://ztm-ready-documentation.vercel.app/', target='_blank'>
         🔗 documentation website 
       </a>
