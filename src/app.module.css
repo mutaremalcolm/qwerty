@@ -1,0 +1,135 @@
+.text {
+  width: 100%; /* Use full width by default */
+  max-width: 700px; /* Restrict maximum width for larger screens */
+  margin: 0 auto; /* Center the text horizontally */
+}
+
+.correctChar,
+.incorrectChar,
+.untypedChar,
+.spaceChar {
+  line-height: 1.6;
+  word-spacing: 0.3rem; /* Use rem for better scaling */
+  font-size: clamp(1rem, 2.5vw, 1.75rem); /* Responsive font size */
+}
+
+.gameStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 1.5rem; /* Use relative units for spacing */
+  margin-bottom: 1.5rem; /* Adjust spacing for smaller screens */
+}
+
+.gameStatus div {
+  gap: 0.3rem; /* Reduce gap for smaller screens */
+  display: flex;
+  align-items: center;
+  color: black;
+  text-align: center; /* Center-align content for smaller screens */
+}
+
+.gameStatus div {
+  font-size: clamp(1rem, 2.5vw, 1.25rem); /* Responsive font size */
+}
+
+.gameStatus div svg {
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive icon size */
+  color: #007bff;
+}
+
+.gameStatus div:last-child svg {
+  font-size: clamp(2rem, 4vw, 2.5rem); /* Larger icon, responsive */
+}
+
+.correctChar {
+  color: black;
+}
+
+.incorrectChar {
+  color: rgb(211, 30, 30);
+}
+
+.untypedChar {
+  color: gray;
+}
+
+.spaceChar {
+  color: gray;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .gameStatus div {
+    color: white;
+  }
+
+  .correctChar {
+    color: white;
+  }
+
+  .incorrectChar {
+    color: rgb(255, 78, 78);
+  }
+
+  .untypedChar {
+    color: #646669;
+  }
+
+  .spaceChar {
+    color: #646669;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  .text {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    word-spacing: 0.2rem; /* Reduce word spacing */
+    padding: 0 1rem; /* Add padding for better readability */
+  }
+
+  .gameStatus {
+    flex-direction: column; /* Stack items vertically */
+    gap: 1rem; /* Reduce spacing between items */
+  }
+
+  .gameStatus div {
+    font-size: 1rem; /* Smaller font size */
+  }
+
+  .gameStatus div svg {
+    font-size: 1.2rem; /* Smaller icon size */
+  }
+
+  .gameStatus div:last-child svg {
+    font-size: 2rem; /* Adjust large icon size */
+  }
+}
+
+/* Responsive design for large screens */
+@media (min-width: 1200px) {
+  .text {
+    max-width: 800px; /* Increase max width for large screens */
+  }
+
+  .correctChar,
+  .incorrectChar,
+  .untypedChar,
+  .spaceChar {
+    font-size: 1.8rem; /* Larger font size for readability */
+  }
+
+  .gameStatus div {
+    font-size: 1.5rem; /* Larger font size */
+  }
+
+  .gameStatus div svg {
+    font-size: 2rem; /* Increase icon size */
+  }
+
+  .gameStatus div:last-child svg {
+    font-size: 2.5rem; /* Larger size for emphasis */
+  }
+}
+}

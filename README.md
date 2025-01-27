@@ -1,51 +1,48 @@
-# React + TypeScript + Vite
+<!-- Headings -->
+<div align="center">
+    <h1>Qwerty Typing Practice Application</h1>
+    <h6>
+        built with <a href="https://nextjs.org">Vite</a> &
+        hosted by <a href="https://vercel.com/">Vercel</a> 
+    </h6>
+    <!-- <h3> ⚠ Currently a work in progress ⚠</h3>
+    <h4>
+      <a href='https://qwerty-xi-three.vercel.app/', target='_blank'>
+        🔗 demo website
+      </a>
+    </h4>
+    <h4>
+      <a href='https://ztm-ready-documentation.vercel.app/', target='_blank'>
+        🔗 documentation website 
+      </a>
+    </h4> -->
+    <hr>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- Logo -->
+<!-- <p align='center'>
+<a href='🎯', target='_blank'>
+    <img src="🎯" alt="Demo" title="DemoImage" width="500" height="300">
+</a>
+</p> -->
 
-Currently, two official plugins are available:
+<!-- -------------------------------------------------------------------------- -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Qwerty Application  
 
-## Expanding the ESLint configuration
+The **Qwerty Application** is a dynamic typing test app designed with state management at its core. Built to provide users with an intuitive and responsive experience, the app delivers a new typing test after completing each session. It also allows users to track their progress as they type, spot mistakes in real time, and receive a detailed summary after each test.  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Developing Qwerty was a deep dive into state management. The challenge lay in managing multiple states, such as the current test data, user input, error tracking, typing progress, and the final summary. By leveraging state management principles effectively, I ensured seamless updates to the UI as users interacted with the app.  
 
-- Configure the top-level `parserOptions` property like this:
+## Key Features  
+- **Real-time Progress Updates**: Users can monitor their typing speed, accuracy, and mistakes as they type.  
+- **Error Highlighting**: Mistakes are highlighted instantly, helping users correct errors early.  
+- **Caps Lock Warning**: A subtle alert ensures users know when caps lock is on, preventing unnecessary errors.  
+- **Summary After Each Test**: A comprehensive review of performance, including typing speed, accuracy, and mistakes, is displayed after every session.  
+- **Minimalist Design**: The interface is distraction-free, focusing entirely on the typing experience.  
+- **Dynamic Test Refresh**: After completing a test, a new one is generated automatically, keeping the experience fresh and challenging.  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+By building Qwerty, I gained invaluable experience in managing complex app states, from real-time data binding to UI responsiveness. This project helped me better understand the nuances of state transitions, ensuring that every feature remains synchronized with user input. The result is an application that's both highly functional and an excellent tool for improving typing skills.  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<br/>
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# qwerty

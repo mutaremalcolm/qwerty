@@ -1,68 +1,61 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Universal Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  min-height: 100vh; /* Use min-height instead of height to prevent overflow issues on small screens */
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column; /* Stack content on small screens */
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif; /* Fixed typo from "Robotto" */
+  background-color: #f0f4f8;
+  padding: 1rem; /* Add some padding for small screens */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* Ensure no line breaks */
+  border: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #323437;
   }
-  a:hover {
-    color: #747bff;
+}
+
+/* Responsive Typography */
+body {
+  font-size: 16px; /* Default font size */
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Slightly smaller font size on small screens */
   }
-  button {
-    background-color: #f9f9f9;
+}
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px; /* Larger font size for large screens */
+  }
+}
+
+/* Adjust Layout for Large Screens */
+@media (min-width: 1024px) {
+  body {
+    flex-direction: row; /* Align content in a row for larger screens */
+    padding: 2rem; /* Add extra padding for large screens */
   }
 }
