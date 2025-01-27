@@ -1,51 +1,122 @@
-# React + TypeScript + Vite
+<!-- Headings -->
+<div align="center">
+    <h1>Qwerty Typing Practice Application</h1>
+    <h6>
+        built with <a href="https://nextjs.org">Vite</a> &
+        hosted by <a href="https://vercel.com/">Vercel</a> 
+    </h6>
+    <h3> ⚠ Currently a work in progress ⚠</h3>
+    <h4>
+      <a href='https://qwerty-xi-three.vercel.app/', target='_blank'>
+        🔗 demo website
+      </a>
+    </h4>
+    <h4>
+      <a href='https://ztm-ready-documentation.vercel.app/', target='_blank'>
+        🔗 documentation website 
+      </a>
+    </h4>
+    <hr>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- Logo -->
+<!-- <p align='center'>
+<a href='🎯', target='_blank'>
+    <img src="🎯" alt="Demo" title="DemoImage" width="500" height="300">
+</a>
+</p> -->
 
-Currently, two official plugins are available:
+<!-- -------------------------------------------------------------------------- -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# **INTRODUCTION**:
 
-## Expanding the ESLint configuration
+Welcome to the ZTM Quiz Platform. A web application inspired by ZTM, designed to create an engaging and interactive quiz platform for students. The project aims to empower learning through gamification and dynamic features tailored to enhance the learning experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+More than a quiz tool; it's a holistic learning ecosystem designed to prepare students for successful careers in tech.
 
-- Configure the top-level `parserOptions` property like this:
+## **Project Goals:**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1.  **Job-Ready Assessment:**
+
+    This platform serves as a checkpoint to assess students' readiness for the elevated standards expected in today's competitive job market. Successful completion instills the confidence and assurance needed for students to navigate the demanding entry requirements and confidently step into the workforce.
+
+2.  **Interactive Learning Experience:**
+
+    The platform creates an engaging learning environment by integrating gaming elements with educational content. This approach aids students in introducing, comprehending, and articulating the necessary aspects and broader coding concepts required to enter todays competitive job market.
+
+3.  **By ZTM Students, For ZTM Students:**
+
+    Aligning with ZTM's teaching methodologies, this platform is crafted by students and tailored for its students. It serves as a repetitive reinforcement of course materials while also functioning as an open-source repository for students to contribute to and implement/learn modern best practices.
+
+4.  **Fostering Autonomous Learning:**
+
+    With adaptive learning features, progress tracking, and a user-friendly dashboard, students can personalize and track their learning journeys. This autonomy fosters a deeper understanding of coding concepts, empowering students and enriching their preparation for today's heightened entry requirements.
+
+<br/>
+
+### Community-Driven Collaboration:
+
+As an open-source initiative and embracing the spirit of open collaboration, the platform extends an open invitation to everyone, welcoming their expertise, creativity, and passion to collectively enhance the learning journey for all participants.
+
+If you'd like to contribute to this repository by adding more features, fixing bugs, or improving documentation, please feel free to check out the list of **[existing issues](https://ztm-ready-portfolio-project.vercel.app/)** as well as our **[contribution guides](https://ztm-ready-documentation.vercel.app/ContributionGuides/overview)**.
+
+Your contributions are greatly appreciated!
+
+## <br/>
+
+<!-- ---------------------------------------------------------------- -->
+
+# **RUNNING LOCALLY:**
+
+<!-- Small container -->
+<details>
+<summary> Click here to see how to run this locally: 🏃‍♂️ </summary>
+<br/>
+
+**Node version 18.x.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/DevonGifford/ZTM-Card-Flip.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Install packages
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```shell
+npm i
 ```
-# qwerty
+
+### Start the app
+
+```shell
+npm run dev
+```
+
+<!-- CLOSING DIV -->
+</details>
+
+<br><br>
+
+---
+
+# **LICENSE**
+
+This project is licensed under the [MIT License](🎯).
+
+<br/>
+
+---
+
+# **NOTES:**
+
+<details>
+<summary> Click here to see further notes: </summary>
+<br/>
+
+- This project is for educational purposes only and not affiliated with ZTM.
+
+<!-- CLOSING DIV -->
+</details>
+
+<br>

@@ -6,6 +6,9 @@
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 90%; /* Restricts width on smaller screens */
+    margin: 0 auto; /* Centers the component horizontally */
+    transition: all 0.3s ease; /* Smooth transitions for layout adjustments */
 }
 
 .wrapper p {
@@ -16,6 +19,8 @@
     border-radius: 5px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    font-size: 1rem; /* Makes font size responsive */
+    line-height: 1.5; /* Improves readability */
 }
 
 .wrapper p span {
@@ -28,10 +33,11 @@
     border-radius: 5px;
     background-color: #007bff;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    align-self: center; /* Centers the button in the layout */
 }
 
 .replayButton:hover {
@@ -43,6 +49,7 @@
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
 }
 
+/* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
     .wrapper {
         background-color: #2a2a2a;
@@ -55,5 +62,39 @@
         background-color: #333333;
         color: #e0e0e0;
         box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 15px; /* Reduces padding for smaller screens */
+        max-width: 100%; /* Utilizes full screen width */
+    }
+
+    .wrapper p {
+        font-size: 0.9rem; /* Reduces font size slightly for smaller screens */
+        padding: 12px; /* Reduces padding inside the paragraphs */
+    }
+
+    .replayButton {
+        font-size: 0.9rem; /* Makes button text smaller for smaller screens */
+        padding: 8px 16px; /* Adjusts button padding */
+    }
+}
+
+/* Larger screens adjustments */
+@media (min-width: 1024px) {
+    .wrapper {
+        max-width: 600px; /* Constrains width for readability */
+    }
+
+    .wrapper p {
+        font-size: 1.1rem; /* Increases font size for larger screens */
+    }
+
+    .replayButton {
+        font-size: 1.1rem; /* Enlarges button text for larger screens */
+        padding: 12px 24px; /* Adds more padding to the button */
     }
 }

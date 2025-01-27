@@ -6,7 +6,7 @@ export default function FocusWrapper(){
         <div className={styles.wrapper}>
             <h1>
                 <PiCursorFill />
-                Click or start typing for FocusWrapper
+                Click or start typing and practice using Qwerty
             </h1>
         </div>
     );

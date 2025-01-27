@@ -1,18 +1,23 @@
+/* Universal Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
-  height: 100vh;
+  min-height: 100vh; /* Use min-height instead of height to prevent overflow issues on small screens */
   display: flex;
+  flex-direction: column; /* Stack content on small screens */
   justify-content: center;
   align-items: center;
-  font-family: "Robotto", sans-serif;
-  background-color: #f0f4f8 
+  font-family: "Roboto", sans-serif; /* Fixed typo from "Robotto" */
+  background-color: #f0f4f8;
+  padding: 1rem; /* Add some padding for small screens */
 }
 
+/* Screen Reader Only Utility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -21,11 +26,36 @@ body {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* Ensure no line breaks */
   border: 0;
 }
 
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #323437;
+  }
+}
+
+/* Responsive Typography */
+body {
+  font-size: 16px; /* Default font size */
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Slightly smaller font size on small screens */
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px; /* Larger font size for large screens */
+  }
+}
+
+/* Adjust Layout for Large Screens */
+@media (min-width: 1024px) {
+  body {
+    flex-direction: row; /* Align content in a row for larger screens */
+    padding: 2rem; /* Add extra padding for large screens */
   }
 }
