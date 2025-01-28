@@ -21,7 +21,7 @@ export default function App() {
   const [timer, setTimer] = useState<number>(30);
 
   useEffect(() => {
-    setCurrentText(texts[Math.floor(Math.random() * TextDecoderStream.length)]);
+    setCurrentText(texts[Math.floor(Math.random() * texts.length)]);
 
     const focusInput = () => {
       setIsFocused(true);
@@ -126,7 +126,7 @@ export default function App() {
     setTimer(30);
     setStartTime(null);
     setEndTime(null);
-    setCurrentText(texts[Math.floor(Math.random() * TextDecoderStream.length)]);
+    setCurrentText(texts[Math.floor(Math.random() * texts.length)]);
     setPoints(points - mistakes + earnedPoints);
   };
 
