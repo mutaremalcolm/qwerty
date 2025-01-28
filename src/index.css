@@ -7,14 +7,14 @@
 
 /* Body Styles */
 body {
-  min-height: 100vh; /* Use min-height instead of height to prevent overflow issues on small screens */
+  min-height: 100vh; 
   display: flex;
-  flex-direction: column; /* Stack content on small screens */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
-  font-family: "Roboto", sans-serif; /* Fixed typo from "Robotto" */
+  font-family: "Roboto", sans-serif; 
   background-color: #f0f4f8;
-  padding: 1rem; /* Add some padding for small screens */
+  padding: 1rem; 
 }
 
 /* Screen Reader Only Utility */
@@ -26,7 +26,7 @@ body {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* Ensure no line breaks */
+  white-space: nowrap; 
   border: 0;
 }
 
@@ -39,23 +39,23 @@ body {
 
 /* Responsive Typography */
 body {
-  font-size: 16px; /* Default font size */
+  font-size: 16px; 
 }
 @media (max-width: 768px) {
   body {
-    font-size: 14px; /* Slightly smaller font size on small screens */
+    font-size: 14px; 
   }
 }
 @media (min-width: 1200px) {
   body {
-    font-size: 18px; /* Larger font size for large screens */
+    font-size: 18px; 
   }
 }
 
-/* Adjust Layout for Large Screens */
+/* Large Screens */
 @media (min-width: 1024px) {
   body {
-    flex-direction: row; /* Align content in a row for larger screens */
-    padding: 2rem; /* Add extra padding for large screens */
+    flex-direction: row; 
+    padding: 2rem; 
   }
 }
